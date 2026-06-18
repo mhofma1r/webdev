@@ -203,3 +203,16 @@ a file that generally describes my expectations for good code.
 a file that the agent can use to track important informations documentation and about the project  or questions the 
 agent wants Michael to be aware of. if you have one of these please segent them out clearly visible so i can see them 
 if i scroll over the file. important limitations.
+
+## /var/www/.projectmanagement/ProjectOutlineTree:
+filesystem-backed project outline used for project-manager planning.
+
+- The root is split into `implemented/` and `planned/`.
+- `implemented/` contains outline areas that already have a working application foundation.
+- `planned/` contains future-facing scope, long-term goals, and items that are not operational yet.
+- Heading levels from the original outline are represented as nested folders.
+- Every terminal/leaf folder contains exactly one `reqirement.md` file.
+- `reqirement.md` contains the requirements, scope notes, descriptions, or feature bullets for that specific area.
+- Keep this tree aligned with `/var/www/.projectmanagement/ProjectOutline.md`, `/var/www/.projectmanagement/TODO.md`, and the actual implementation state.
+- Do not move items between `implemented/` and `planned/` unless the implementation state or Michael's planning decision justifies it.
+- Keep the requested filename spelling `reqirement.md` unless Michael explicitly asks to rename it.

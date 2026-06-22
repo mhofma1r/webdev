@@ -34,6 +34,17 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"&& 
  RM "/etc/apache2/sites-available/000-default.conf"
 COPY .conf/apache2.conf "/etc/apache2/sites-available/000-default.conf"
 COPY .conf/envvars "/etc/apache2/"
+# Atlassian CLI
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates wget gnupg2 \
+    && mkdir -p -m 755 /etc/apt/keyrings \
+    && wget -nv -O- https://acli.atlassian.com/gpg/public-key.asc \
+        | gpg --dearmor -o /etc/apt/keyrings/acli-archive-keyring.gpg \
+    && chmod go+r /etc/apt/keyrings/acli-archive-keyring.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/acli-archive-keyring.gpg] https://acli.atlassian.com/linux/deb stable main" \
+        > /etc/apt/sources.list.d/acli.list \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends acli
 #
 ## php config
 RUN rm "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"

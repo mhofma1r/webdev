@@ -65,7 +65,7 @@ RUN npm install -g playwright
 RUN playwright install chromium
 RUN playwright install-deps chromium
 
-RUN apt-get install -y git ripgrep curl unzip sqlite3 jq  gnupg
+RUN apt-get install -y git ripgrep curl unzip a3 jq  gnupg
 # Set PATH
 RUN PATH="/var/www/html/node_modules/.bin:$PATH"
 RUN export PATH

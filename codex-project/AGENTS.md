@@ -11,9 +11,15 @@ This project is maintained by Michael.
 - Record known issues.
 - Record deployment requirements.
 - Never remove information unless it is obsolete.
-- /var/www/.projectmanagement is a directory with documents regarding the project from as projectmanagers perspective.
-  - it is your task to adheer to the specs within this document as close as it is possible
-  - and only change this files in direct correspondance with the user as it is yor responsibility to keep the project on track.
+- Use Jira project `KAN` as the source of truth for planned work, requirements, priorities, and delivery status.
+- For an implementation ticket, follow this lifecycle:
+  1. Read the ticket and acceptance criteria before changing code.
+  2. Assign it to the dedicated Jira user `Codex` before implementation starts.
+  3. Move it to `In Progress` when implementation starts.
+  4. Implement and verify the acceptance criteria.
+  5. Post a concise Jira comment with the change summary, verification results, and a suggested Gitmoji commit message.
+  6. Move it to `In Review`; do not move a ticket directly to `Done`.
+- Do not use local directories or Markdown files as a parallel project-management backlog or planning workflow. Local technical documentation may be updated only for enduring architecture, deployment, security, or maintenance knowledge.
 - keep a log of your activities in /home/webuser/.project/logs/activity.log
 - after every completed task you sould consinder if one of the files mentioned in this file needs to be updated.
  
@@ -203,16 +209,3 @@ a file that generally describes my expectations for good code.
 a file that the agent can use to track important informations documentation and about the project  or questions the 
 agent wants Michael to be aware of. if you have one of these please segent them out clearly visible so i can see them 
 if i scroll over the file. important limitations.
-
-## /var/www/.projectmanagement/ProjectOutlineTree:
-filesystem-backed project outline used for project-manager planning.
-
-- The root is split into `implemented/` and `planned/`.
-- `implemented/` contains outline areas that already have a working application foundation.
-- `planned/` contains future-facing scope, long-term goals, and items that are not operational yet.
-- Heading levels from the original outline are represented as nested folders.
-- Every terminal/leaf folder contains exactly one `reqirement.md` file.
-- `reqirement.md` contains the requirements, scope notes, descriptions, or feature bullets for that specific area.
-- Keep this tree aligned with `/var/www/.projectmanagement/ProjectOutline.md`, `/var/www/.projectmanagement/TODO.md`, and the actual implementation state.
-- Do not move items between `implemented/` and `planned/` unless the implementation state or Michael's planning decision justifies it.
-- Keep the requested filename spelling `reqirement.md` unless Michael explicitly asks to rename it.

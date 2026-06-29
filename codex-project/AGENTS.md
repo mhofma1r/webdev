@@ -22,6 +22,9 @@ This project is maintained by Michael.
 - Do not use local directories or Markdown files as a parallel project-management backlog or planning workflow. Local technical documentation may be updated only for enduring architecture, deployment, security, or maintenance knowledge.
 - keep a log of your activities in /home/webuser/.project/logs/activity.log
 - after every completed task you sould consinder if one of the files mentioned in this file needs to be updated.
+- when making technical decisions, dont give much waight to development cost
+  instead priorize quality and simplicity robustness and maintainability.
+- prefere E2E tests over unit tests.
  
 
 ## Coding Style

@@ -59,13 +59,16 @@ RUN npm i -g @openai/codex
 COPY agent /usr/local/bin/agent
 RUN chmod +x /usr/local/bin/agent
 # Playwright
-RUN npm install -g playwright
+ENV PLAYWRIGHT_BROWSERS_PATH=/opt/playwright
+RUN npm i -g @playwright/cli@latest \
+    && playwright install chromium \
+    && chown -R 1000:1000 /opt/playwright
 
 # Browser und Dependencies installieren
 RUN playwright install chromium
 RUN playwright install-deps chromium
 
-RUN apt-get install -y git ripgrep curl unzip a3 jq  gnupg
+RUN apt-get install -y git ripgrep curl unzip  jq  gnupg
 # Set PATH
 RUN PATH="/var/www/html/node_modules/.bin:$PATH"
 RUN export PATH

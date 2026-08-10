@@ -1,10 +1,19 @@
 volumes:
   mariadb:
+
+networks:
+  codex-internal:
+    driver: bridge
+    internal: true
+  codex-egress:
+    driver: bridge
+
 services:
   web:
     build:
       context: web
       dockerfile: Dockerfile
+
     volumes:
       - ./codex-data:/home/webuser/.codex
       - ./codex-project:/home/webuser/.project
@@ -12,39 +21,67 @@ services:
       - .composer:/root/.composer
       - .log:/var/log
       - ../php:/var/www/html
+
     working_dir: /var/www/html
+
     extra_hosts:
       - host.docker.internal:host-gateway
+
     environment:
       - PHP_INI_DIR=/usr/local/etc/php/conf.d/
+
     ports:
-      - 80:80
-    links:
+      - "80:80"
+
+    expose:
+      - "22"
+
+    networks:
+      - default
+      - codex-internal
+
+    depends_on:
       - mariadb
+
   mariadb:
     image: mariadb:latest
     restart: on-failure
+
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./mariadb_data:/var/lib/mysql
       - ./db_seed:/tmp/db_seed/
+
     ports:
-      - '33060:3306'
+      - "33060:3306"
+
     environment:
       MYSQL_ROOT_PASSWORD: "mewj8mtn"
       MYSQL_DATABASE: "laravel"
       MYSQL_USER: "remote"
       MYSQL_PASSWORD: "782kEW17"
+
   phpmyadmin:
     depends_on:
       - mariadb
+
     image: phpmyadmin/phpmyadmin
     restart: on-failure
+
     ports:
-      - '8888:80'
-    links:
-      - mariadb
+      - "8888:80"
+
     environment:
       PMA_HOST: mariadb
-      MYSQL_ROOT_PASSWORD: mewj8mtn
+      MYSQL_ROOT_PASSWORD: "mewj8mtn"
 
+  codex:
+    build:
+      context: codex
+      dockerfile: Dockerfile
+    depends_on:
+      - web
+
+    networks:
+      - codex-internal
+      - codex-egress

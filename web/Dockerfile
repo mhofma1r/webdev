@@ -94,7 +94,8 @@ COPY ssh/* /root/.ssh/
 COPY ssh/* /home/webuser/.ssh/
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-EXPOSE 22
+RUN chown -R webuser:webuser /home/webuser/.ssh
+
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["apache2-foreground"]

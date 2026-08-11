@@ -35,4 +35,6 @@ COPY  ssh/id_ed25519.pub /home/codex/.ssh/id_ed25519.pub
 
 RUN chown 1000:1000 /home/codex/.ssh/id_ed25519.pub
 RUN chown 1000:1000 /home/codex/.ssh/id_ed25519
+RUN chmod 700 /home/codex/.ssh
+run chmod 600 /home/codex/.ssh/id_ed25519
 USER codex

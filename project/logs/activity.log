@@ -1,0 +1,21 @@
+2026-06-01T07:17:38Z Read session/project instructions; DEVELOPMENT_NOTES.md was missing, so created it with initial project context. Awaiting Michael's specific task.
+2026-06-01T07:20:36Z Checked DEVELOPMENT_NOTES.md and first-party project files for TODO/unfinished work; no recorded next task found.
+2026-06-01T07:22:40Z Found and read /var/www/.projectmanagement/TODO.md after Michael asked about it; recorded TODO location and next Phase 1 item in DEVELOPMENT_NOTES.md.
+2026-06-01T07:32:53Z Read provided project instructions and DEVELOPMENT_NOTES.md context; no concrete task was included after Michael's request header.
+2026-06-01T07:34:06Z Checked /var/www/.projectmanagement/TODO.md for Michael; confirmed next project-manager item is TODO-3: Persist Module And Course Completion Properly.
+2026-06-01T08:09:16Z Updated TODO-3.1 in /var/www/.projectmanagement/TODO.md to include learner-facing visual progress/statistics and timing data for practice activities such as Sudoku and Minesweeper; mirrored the scope change in DEVELOPMENT_NOTES.md.
+2026-06-01T08:10:10Z Checked Laravel console routes and seeders for Michael; confirmed practice module/catalog sync command is php artisan learning-content:sync.
+2026-06-01T08:24:20Z Implemented TODO-3: added user_module_progress persistence, progress service/model/controller/routes, backend hydration for learning tracks, answer-driven completion, reset support, Sudoku/Minesweeper elapsed-time reporting, tests, and frontend build verification.
+2026-06-01T10:01:28Z Read current session instructions and DEVELOPMENT_NOTES.md; no concrete Michael request was included after the request header.
+2026-06-01T10:04:25Z Checked whether TODO-3 progress work was fully implemented into the UI; confirmed learning/practice screens are wired, but dashboard UI remains empty and is tracked as TODO-4.
+2026-06-01T11:58:57Z Read current session instructions and DEVELOPMENT_NOTES.md; no concrete Michael request was included after the request header.
+2026-06-01T12:04:36Z Implemented TODO-4: added backend learner dashboard aggregation, dashboard UI, course progress report route/view, tests for empty and active progress states, and verified with php artisan test plus npm run build.
+2026-06-01T12:05:48Z Started Laravel development server for TODO-4 review at http://0.0.0.0:8000.
+2026-06-01T12:23:09Z Investigated non-persisted training results; found generated math trainers had no DB save path, added module result persistence endpoint and wired generated math/number-line/mental arithmetic trainers to user_module_progress, then verified with php artisan test and npm run build.
+2026-06-01T12:44:05Z Fixed user_practice_question_answers remaining empty for generated trainers by allowing generated answer rows, writing generated attempts through the module result endpoint, applying the migration to MariaDB, and verifying with php artisan test plus npm run build.
+2026-06-01T13:14:53Z Verified Turbo Arithmetics persistence path; found legacy /practice/math/turboarithmetics rendered without practiceModule/progress endpoints, fixed PageController to resolve modules by view_name for legacy practice routes, and added tests confirming Turbo answers persist and appear in dashboard counts.
+2026-06-01T13:19:06Z Generated public/favicon.ico as a deterministic multi-size ICO asset and added an explicit favicon link in the shared app layout.
+2026-06-01T13:21:24Z Fixed Turbo Arithmetics Alpine error by switching endpoint injection back to registered Alpine data providers with parameters; verified targeted Turbo tests, full php artisan test, and npm run build.
+2026-06-01T13:29:27Z Restored Dashboard link to desktop and responsive top navigation and added a focused dashboard nav assertion.
+2026-06-01T13:48:47Z Changed generated math module completion rules so backend completion requires more than 100 correct persisted generated answers and a score above 80%; aligned frontend thresholds and verified with php artisan test plus npm run build.
+2026-06-19T14:09:56Z Read current session instructions, DEVELOPMENT_PREFERENCES.md, and DEVELOPMENT_NOTES.md from provided context; no concrete Michael request was included after the request header.

@@ -83,6 +83,7 @@ services:
       - web
     volumes:
       - ./codex-data:/home/codex/.codex
+      - ./project:/home/codex/.project
     networks:
       - codex-internal
       - codex-egress

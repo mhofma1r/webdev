@@ -32,6 +32,7 @@ RUN chmod 700 /home/codex/.ssh
 RUN mkdir -p /home/codex/.ssh
 COPY  ssh/id_ed25519 /home/codex/.ssh/id_ed25519
 COPY  ssh/id_ed25519.pub /home/codex/.ssh/id_ed25519.pub
+COPY AGENTS.md /home/webuser/.codex/
 
 RUN chown 1000:1000 /home/codex/.ssh/id_ed25519.pub
 RUN chown 1000:1000 /home/codex/.ssh/id_ed25519

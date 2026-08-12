@@ -201,7 +201,9 @@ Before committing:
 
 ### Golden Rule
 
-Write code as if the next person maintaining it is a tired developer reading it at 3 AM during an outage.
+Write code as if the next person maintaining it is a tired developer reading it at 3 AM during an outage. It should be
+simple to understand.no tripple encapsulations. a function or method  should be atomar. that means it does a single 
+thing in a simple way. dont stack if's or loops.
 
 # Projectstructure
 

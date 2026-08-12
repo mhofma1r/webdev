@@ -81,7 +81,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - web
-
+    volumes:
+      - ./codex-data:/home/codex/.codex
     networks:
       - codex-internal
       - codex-egress
